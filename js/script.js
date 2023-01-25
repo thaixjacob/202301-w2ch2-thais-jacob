@@ -1,13 +1,29 @@
 function isPalindrome(sentence) {
-  if (sentence === " ") {
-    console.log("Text not provided");
+  if (sentence === " " || typeof sentence !== "string") {
+    return "Text not provided";
   } else {
-    let minuscula = sentence
-      .toLowerCase()
-      .replaceAll(" ", "")
-      .replace(/[^a-z]/gi, "");
-    return minuscula;
+    let palindrome = sentence
+      .replaceAll(/[.,:;()_*?¿!¡-\s]/g, "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+
+    console.log("Received text:", palindrome);
+
+    palindromeToArray = palindrome.split("");
+
+    palindromeReverse = palindromeToArray.reverse().join("");
+
+    console.log("Reversed text:", palindromeReverse);
+
+    if (palindrome === palindromeReverse) {
+      console.log("That's a palindrome!");
+    }
+
+    if (palindrome !== palindromeReverse) {
+      console.log("That's not a palindrome :(");
+    }
   }
 }
 
-isPalindrome("Mano Brown*_3");
+isPalindrome("mano_Brown Junior*");
