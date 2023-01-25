@@ -26,4 +26,4 @@ function isPalindrome(sentence) {
   }
 }
 
-isPalindrome("mano_Brown Junior*");
+isPalindrome("Roma é amor");
